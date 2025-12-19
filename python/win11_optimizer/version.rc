@@ -1,0 +1,35 @@
+VSVersionInfo(
+  ffi=FixedFileInfo(
+    filevers=(4, 7, 0, 0),
+    prodvers=(4, 7, 0, 0),
+    mask=0x3f,
+    flags=0x0,
+    OS=0x40004,
+    fileType=0x1,
+    subtype=0x0,
+    date=(0, 0)
+  ),
+  kids=[
+    StringFileInfo([
+      StringTable(
+        u'040904B0',
+        [
+          StringStruct(u'CompanyName', u'Sir Fred Iz N D Hauz'),
+          StringStruct(u'FileDescription', u'Windows 11 Optimizer v4.7 - Secure Edition'),
+          StringStruct(u'FileVersion', u'4.7.0.0'),
+          StringStruct(u'InternalName', u'Win11Optimizer'),
+          StringStruct(u'LegalCopyright', u'Copyright © 2025 Sir Fred Iz N D Hauz. All rights reserved.'),
+          StringStruct(u'OriginalFilename', u'Windows 11 Optimizer v4.7.exe'),
+          StringStruct(u'ProductName', u'Windows 11 Optimizer'),
+          StringStruct(u'ProductVersion', u'4.7.0.0'),
+          StringStruct(u'Comments', u'Fixes domain trust relationship and security log full errors. Enterprise-safe optimizations.'),
+          StringStruct(u'LegalTrademarks', u'Windows 11 Optimizer™'),
+          StringStruct(u'PrivateBuild', u'Build 4.7.2025.1220'),
+          StringStruct(u'SpecialBuild', u'Secure Edition - No Sophos Alerts'),
+          StringStruct(u'Language', u'English (United States)'),
+          StringStruct(u'Homepage', u'https://github.com/sirfred31/windows-11-optimizer')
+        ])
+    ]),
+    VarFileInfo([VarStruct(u'Translation', [1033, 1200])])
+  ]
+)
