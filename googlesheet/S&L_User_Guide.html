@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings & Loan System - User Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #2c3e50;
+        }
+        
+        .logo {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: #3498db;
+            font-size: 24px;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        h3 {
+            color: #2c3e50;
+            font-size: 20px;
+            margin: 25px 0 10px 0;
+        }
+        
+        h4 {
+            color: #34495e;
+            font-size: 18px;
+            margin: 20px 0 10px 0;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .menu-command {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 12px 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .feature-box {
+            background-color: #e8f4fc;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .warning-box {
+            background-color: #fdeaea;
+            border: 1px solid #e74c3c;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            color: #c0392b;
+        }
+        
+        .info-box {
+            background-color: #e8f8f5;
+            border: 1px solid #1abc9c;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .success-box {
+            background-color: #eafaf1;
+            border: 1px solid #27ae60;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th {
+            background-color: #2c3e50;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .checkbox {
+            margin: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .checkbox:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+        }
+        
+        .section {
+            page-break-inside: avoid;
+            margin-bottom: 30px;
+        }
+        
+        .toc {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+        }
+        
+        .toc ul {
+            column-count: 2;
+            column-gap: 40px;
+        }
+        
+        .toc li {
+            margin-bottom: 5px;
+        }
+        
+        .color-status {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        
+        .new { background-color: #f39c12; }
+        .on-track { background-color: #27ae60; }
+        .partial { background-color: #f1c40f; }
+        .overdue { background-color: #e74c3c; }
+        .inactive { background-color: #95a5a6; }
+        
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            
+            h2 {
+                page-break-before: always;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .toc ul {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🏦</div>
+            <h1>Savings & Loan System</h1>
+            <div class="subtitle">Complete User Guide</div>
+            <p><strong>Version 1.0</strong> | January 2026</p>
+        </div>
+
+        <div class="section">
+            <div class="info-box">
+                <h3>📋 Document Information</h3>
+                <p><strong>System Name:</strong> Savings & Loan System</p>
+                <p><strong>Document Version:</strong> 1.0</p>
+                <p><strong>Last Updated:</strong> January 2026</p>
+                <p><strong>Applicable For:</strong> Administrators, Operators, Users</p>
+                <p><strong>Confidentiality:</strong> Internal Use Only</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📖 TABLE OF CONTENTS</h2>
+            <div class="toc">
+                <ul>
+                    <li>1.0 System Setup & Installation</li>
+                    <li>2.0 Member Management</li>
+                    <li>3.0 Savings Operations</li>
+                    <li>4.0 Loan Management</li>
+                    <li>5.0 Reports & Analytics</li>
+                    <li>6.0 System Maintenance</li>
+                    <li>7.0 View Settings & Access Control</li>
+                    <li>8.0 Member Portal Guide</li>
+                    <li>9.0 Troubleshooting Guide</li>
+                    <li>10.0 Quick Start Checklist</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>1.0 SYSTEM SETUP & INSTALLATION</h2>
+            
+            <h3>1.1 Installation Steps</h3>
+            
+            <h4>Step 1: Create Google Sheet</h4>
+            <ul>
+                <li>Go to sheets.google.com</li>
+                <li>Click "+ Blank" to create new spreadsheet</li>
+                <li>Name it: "Community Savings & Loan System"</li>
+            </ul>
+            
+            <h4>Step 2: Access Apps Script</h4>
+            <ul>
+                <li>Click <strong>Extensions → Apps Script</strong></li>
+                <li>Delete any existing code in editor</li>
+                <li>Copy the complete system code</li>
+                <li>Paste into Apps Script editor</li>
+            </ul>
+            
+            <h4>Step 3: Save and Authorize</h4>
+            <ul>
+                <li>Click <strong>Save</strong> (💾 icon) or press Ctrl+S</li>
+                <li>Click <strong>Run</strong> (▶️ icon)</li>
+                <li>Click <strong>Review Permissions</strong></li>
+                <li>Select your Google account</li>
+                <li>Click <strong>Advanced → Go to Project</strong></li>
+                <li>Click <strong>Allow</strong> to authorize</li>
+            </ul>
+            
+            <h4>Step 4: Generate System</h4>
+            <ul>
+                <li>Close Apps Script tab</li>
+                <li>Refresh Google Sheet (F5)</li>
+                <li>Wait 30-60 seconds for generation</li>
+                <li>Look for "🏦 S&L System" menu in toolbar</li>
+            </ul>
+            
+            <div class="warning-box">
+                <h4>⚠️ IMPORTANT SECURITY NOTES</h4>
+                <p>1. Only authorize if you trust the script source</p>
+                <p>2. The script needs permissions to manage your spreadsheet</p>
+                <p>3. Never share the script with untrusted parties</p>
+                <p>4. Regular users only need view access to the sheet</p>
+            </div>
+            
+            <h3>1.2 Initial Configuration</h3>
+            
+            <div class="menu-command">🏦 S&L System → ⚙️ System Settings</div>
+            
+            <p>Configure these settings:</p>
+            <ul>
+                <li><strong>Company Name</strong>: Your organization name</li>
+                <li><strong>Interest Rates</strong>: Verify 9% monthly for loans</li>
+                <li><strong>Payment Amounts</strong>: Confirm ₱1,000 per period</li>
+                <li><strong>Loan Limits</strong>: Set ₱1,000-₱20,000 range</li>
+            </ul>
+            
+            <p>Click <strong>SAVE SETTINGS</strong> button</p>
+            
+            <h3>1.3 Default Settings</h3>
+            
+            <table>
+                <tr>
+                    <th>Setting</th>
+                    <th>Default Value</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Loan Interest</td>
+                    <td>9% PER MONTH</td>
+                    <td>Must be clearly disclosed to members</td>
+                </tr>
+                <tr>
+                    <td>Savings Interest</td>
+                    <td>9% per year (0.75% monthly)</td>
+                    <td>Annual interest rate for savings</td>
+                </tr>
+                <tr>
+                    <td>Monthly Contribution</td>
+                    <td>₱2,000</td>
+                    <td>₱1,000 on 5th & ₱1,000 on 20th</td>
+                </tr>
+                <tr>
+                    <td>Minimum Savings</td>
+                    <td>₱1,000</td>
+                    <td>Required to join the system</td>
+                </tr>
+                <tr>
+                    <td>Savings for Loan</td>
+                    <td>₱6,000</td>
+                    <td>Minimum savings to qualify for loan</td>
+                </tr>
+                <tr>
+                    <td>Reserve Ratio</td>
+                    <td>30%</td>
+                    <td>Percentage kept as reserve fund</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>2.0 MEMBER MANAGEMENT</h2>
+            
+            <h3>2.1 Add New Member</h3>
+            
+            <div class="menu-command">🏦 S&L System → 👥 Member Management → ➕ Add New Member</div>
+            
+            <table>
+                <tr>
+                    <th>Field</th>
+                    <th>Description</th>
+                    <th>Rules</th>
+                </tr>
+                <tr>
+                    <td><strong>Member ID</strong></td>
+                    <td>Auto-generated (M1001, M1002, etc.)</td>
+                    <td>Read-only, sequential</td>
+                </tr>
+                <tr>
+                    <td><strong>Full Name</strong></td>
+                    <td>Complete legal name of member</td>
+                    <td>Required, text only</td>
+                </tr>
+                <tr>
+                    <td><strong>Initial Savings</strong></td>
+                    <td>Initial deposit amount</td>
+                    <td>Minimum ₱1,000, numeric</td>
+                </tr>
+                <tr>
+                    <td><strong>Date Joined</strong></td>
+                    <td>Membership start date</td>
+                    <td>Required, calendar date</td>
+                </tr>
+            </table>
+            
+            <div class="info-box">
+                <h4>📅 First Payment Date Rules</h4>
+                <p><strong>If joins before 5th</strong> → First payment on 20th of same month</p>
+                <p><strong>If joins 6th-20th</strong> → First payment on 5th of next month</p>
+                <p><strong>If joins after 20th</strong> → First payment on 5th of next month</p>
+            </div>
+            
+            <h3>2.2 View All Members</h3>
+            
+            <div class="menu-command">🏦 S&L System → 👥 Member Management → 👥 View All Members</div>
+            
+            <p><strong>Or:</strong> Go directly to <strong>💰 Savings</strong> sheet</p>
+            
+            <h3>2.3 Search Member Information</h3>
+            
+            <p><strong>Method 1: Search Form</strong></p>
+            <div class="menu-command">🏦 S&L System → 👥 Member Management → 🔍 Search Member</div>
+            
+            <p><strong>Method 2: Member Portal</strong></p>
+            <ul>
+                <li>Go to <strong>👤 Member Portal</strong> sheet</li>
+                <li>Select Member ID from dropdown (Cell C7)</li>
+                <li>Information auto-updates instantly</li>
+            </ul>
+            
+            <h3>2.4 Remove Member</h3>
+            
+            <div class="menu-command">🏦 S&L System → 👥 Member Management → 🗑️ Remove Member</div>
+            
+            <div class="warning-box">
+                <h4>⚠️ REMOVAL RESTRICTIONS</h4>
+                <p><strong>CANNOT REMOVE IF:</strong></p>
+                <ul>
+                    <li>Member has active loans (must repay first)</li>
+                    <li>Member has pending payments</li>
+                    <li>System shows "Active" status for loans</li>
+                </ul>
+                <p><strong>ACTION IS PERMANENT AND CANNOT BE UNDONE</strong></p>
+            </div>
+            
+            <h3>2.5 Member Status System</h3>
+            
+            <table>
+                <tr>
+                    <th>Status</th>
+                    <th>Color</th>
+                    <th>Meaning</th>
+                    <th>Action Required</th>
+                </tr>
+                <tr>
+                    <td><strong>New</strong></td>
+                    <td><span class="color-status new"></span> Orange</td>
+                    <td>Recently joined, no regular payments yet</td>
+                    <td>Wait for first payment</td>
+                </tr>
+                <tr>
+                    <td><strong>On Track</strong></td>
+                    <td><span class="color-status on-track"></span> Green</td>
+                    <td>Making regular payments as scheduled</td>
+                    <td>None - good standing</td>
+                </tr>
+                <tr>
+                    <td><strong>Partial</strong></td>
+                    <td><span class="color-status partial"></span> Yellow</td>
+                    <td>Paid but less than required amount</td>
+                    <td>Collect remaining amount</td>
+                </tr>
+                <tr>
+                    <td><strong>Overdue</strong></td>
+                    <td><span class="color-status overdue"></span> Red</td>
+                    <td>Missed payment deadline</td>
+                    <td>Immediate collection needed</td>
+                </tr>
+                <tr>
+                    <td><strong>Inactive</strong></td>
+                    <td><span class="color-status inactive"></span> Gray</td>
+                    <td>No activity for extended period</td>
+                    <td>Contact member</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>3.0 SAVINGS OPERATIONS</h2>
+            
+            <h3>3.1 Payment Schedule</h3>
+            
+            <div class="feature-box">
+                <h4>💰 Fixed Payment Schedule</h4>
+                <p><strong>Twice Monthly Payments:</strong></p>
+                <ul>
+                    <li><strong>5th of Month:</strong> ₱1,000 payment due</li>
+                    <li><strong>20th of Month:</strong> ₱1,000 payment due</li>
+                </ul>
+                <p><strong>Monthly Total:</strong> ₱2,000 per member</p>
+                <p><strong>Annual Total:</strong> ₱24,000 per member</p>
+            </div>
+            
+            <h3>3.2 Record Savings Payment</h3>
+            
+            <div class="menu-command">🏦 S&L System → 💰 Savings → 💵 Record Savings Payment</div>
+            
+            <h4>Step-by-Step Process:</h4>
+            <ol>
+                <li>Select Member ID from dropdown</li>
+                <li>Enter Payment Date</li>
+                <li>Select Payment Amount:
+                    <ul>
+                        <li>₱1,000 (Regular Payment)</li>
+                        <li>₱2,000 (Full Month)</li>
+                        <li>₱500 (Partial)</li>
+                        <li>Other amount (Custom)</li>
+                    </ul>
+                </li>
+                <li>Select Payment Type</li>
+                <li>Click <strong>Record Payment</strong></li>
+            </ol>
+            
+            <h3>3.3 Automatic System Updates</h3>
+            
+            <div class="success-box">
+                <h4>✅ Automatic Actions When Payment Recorded:</h4>
+                <ul>
+                    <li>✓ Updates Total savings balance</li>
+                    <li>✓ Calculates Next payment date</li>
+                    <li>✓ Recalculates Interest earned</li>
+                    <li>✓ Updates Member status</li>
+                    <li>✓ Updates Community funds</li>
+                    <li>✓ Records Transaction history</li>
+                    <li>✓ Updates Dashboard metrics</li>
+                    <li>✓ Updates Summary sheet</li>
+                </ul>
+            </div>
+            
+            <h3>3.4 Interest Calculation</h3>
+            
+            <div class="info-box">
+                <h4>💡 Interest Rate Structure</h4>
+                <p><strong>For Members WITH Active Loan:</strong> 9% per year (0.75% monthly)</p>
+                <p><strong>For Members WITHOUT Loan:</strong> 9% per year (0.75% monthly)</p>
+                <p><strong>Calculation Frequency:</strong> Monthly, based on total savings</p>
+            </div>
+            
+            <h4>Interest Calculation Formulas:</h4>
+            <div class="menu-command">
+                Monthly Interest = Total Savings × 0.75%<br>
+                Annual Interest = Total Savings × 9%
+            </div>
+            
+            <h4>Example Calculation:</h4>
+            <p>If member has ₱10,000 savings:</p>
+            <div class="menu-command">
+                Monthly Interest = ₱10,000 × 0.75% = ₱75<br>
+                Annual Interest = ₱10,000 × 9% = ₱900
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>4.0 LOAN MANAGEMENT</h2>
+            
+            <div class="warning-box">
+                <h4>⚠️ CRITICAL DISCLOSURE REQUIRED</h4>
+                <p><strong>LOAN INTEREST RATE: 9% PER MONTH</strong></p>
+                <p>This must be clearly communicated to all loan applicants.</p>
+                <p>Members must acknowledge understanding before loan approval.</p>
+            </div>
+            
+            <h3>4.1 Loan Eligibility Requirements</h3>
+            
+            <table>
+                <tr>
+                    <th>Requirement</th>
+                    <th>Minimum Standard</th>
+                    <th>System Validation</th>
+                </tr>
+                <tr>
+                    <td><strong>Savings Balance</strong></td>
+                    <td>₱6,000 minimum</td>
+                    <td>Automatic check</td>
+                </tr>
+                <tr>
+                    <td><strong>Savings Status</strong></td>
+                    <td>Must be "On Track"</td>
+                    <td>Automatic check</td>
+                </tr>
+                <tr>
+                    <td><strong>Active Loans</strong></td>
+                    <td>Maximum 1 at a time</td>
+                    <td>Automatic check</td>
+                </tr>
+                <tr>
+                    <td><strong>Payment History</strong></td>
+                    <td>3 months consistent payments</td>
+                    <td>Manual review recommended</td>
+                </tr>
+                <tr>
+                    <td><strong>Community Funds</strong></td>
+                    <td>Sufficient available funds</td>
+                    <td>Automatic check</td>
+                </tr>
+            </table>
+            
+            <h3>4.2 Apply for Loan</h3>
+            
+            <div class="menu-command">🏦 S&L System → 🏦 Loans → 📝 Apply for Loan</div>
+            
+            <h4>Application Steps:</h4>
+            <ol>
+                <li>Select Member ID from dropdown</li>
+                <li>System checks eligibility automatically</li>
+                <li>Enter Loan Amount (₱1,000 - ₱20,000)</li>
+                <li>Enter Loan Term (1-12 months)</li>
+                <li>Click <strong>Calculate</strong> to see details</li>
+                <li>Click <strong>Apply</strong> to approve</li>
+            </ol>
+            
+            <h3>4.3 Loan Calculation Examples</h3>
+            
+            <div class="info-box">
+                <h4>📊 Calculation Formula:</h4>
+                <p><strong>Total Interest = Loan Amount × 9% × Term (months)</strong></p>
+                <p><strong>Total Repayment = Loan Amount + Total Interest</strong></p>
+                <p><strong>Monthly Payment = Total Repayment ÷ Term</strong></p>
+            </div>
+            
+            <table>
+                <tr>
+                    <th>Loan Amount</th>
+                    <th>Term</th>
+                    <th>Monthly Interest</th>
+                    <th>Total Interest</th>
+                    <th>Monthly Payment</th>
+                    <th>Total Repayment</th>
+                </tr>
+                <tr>
+                    <td>₱3,000</td>
+                    <td>3 months</td>
+                    <td>₱270</td>
+                    <td>₱810</td>
+                    <td>₱1,270</td>
+                    <td>₱3,810</td>
+                </tr>
+                <tr>
+                    <td>₱5,000</td>
+                    <td>3 months</td>
+                    <td>₱450</td>
+                    <td>₱1,350</td>
+                    <td>₱2,117</td>
+                    <td>₱6,350</td>
+                </tr>
+                <tr>
+                    <td>₱10,000</td>
+                    <td>6 months</td>
+                    <td>₱900</td>
+                    <td>₱5,400</td>
+                    <td>₱2,567</td>
+                    <td>₱15,400</td>
+                </tr>
+                <tr>
+                    <td>₱20,000</td>
+                    <td>12 months</td>
+                    <td>₱1,800</td>
+                    <td>₱21,600</td>
+                    <td>₱3,467</td>
+                    <td>₱41,600</td>
+                </tr>
+            </table>
+            
+            <h3>4.4 Community Funds Protection</h3>
+            
+            <div class="success-box">
+                <h4>🛡️ Automatic Safety Checks:</h4>
+                <p><strong>Before approving any loan:</strong></p>
+                <ul>
+                    <li>✓ Checks total available community funds</li>
+                    <li>✓ Verifies 30% reserve requirement</li>
+                    <li>✓ Ensures loan doesn't exceed capacity</li>
+                    <li>✓ Prevents over-lending</li>
+                    <li>✓ Maintains financial stability</li>
+                </ul>
+            </div>
+            
+            <h3>4.5 Record Loan Payment</h3>
+            
+            <div class="menu-command">🏦 S&L System → 🏦 Loans → 💳 Record Loan Payment</div>
+            
+            <h4>Payment Recording:</h4>
+            <ol>
+                <li>Select Loan ID or Member ID</li>
+                <li>Enter Payment Amount (minimum ₱100)</li>
+                <li>Enter Payment Date</li>
+                <li>Click <strong>Record Payment</strong></li>
+            </ol>
+            
+            <h3>4.6 Early Loan Repayment</h3>
+            
+            <div class="info-box">
+                <h4>💰 Early Repayment Policy:</h4>
+                <p><strong>Interest Calculation:</strong> Only for actual loan period</p>
+                <p><strong>Example:</strong> ₱5,000 loan for 3 months (₱1,350 interest)</p>
+                <p>If paid in 2 months: Interest = ₱5,000 × 9% × 2 = ₱900</p>
+                <p><strong>Savings:</strong> ₱450 interest saved</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>5.0 REPORTS & ANALYTICS</h2>
+            
+            <h3>5.1 Dashboard Overview</h3>
+            
+            <div class="menu-command">🏦 S&L System → 📊 Reports → 📈 Dashboard Overview</div>
+            
+            <table>
+                <tr>
+                    <th>Metric</th>
+                    <th>Description</th>
+                    <th>Formula/Calculation</th>
+                </tr>
+                <tr>
+                    <td><strong>💰 Total Savings</strong></td>
+                    <td>Sum of all member savings</td>
+                    <td>=SUM('Savings'!C:C)</td>
+                </tr>
+                <tr>
+                    <td><strong>🏦 Total Loans</strong></td>
+                    <td>Sum of all active loans</td>
+                    <td>=SUM('Loans'!C:C)</td>
+                </tr>
+                <tr>
+                    <td><strong>👥 Total Members</strong></td>
+                    <td>Active member count</td>
+                    <td>=COUNTA('Savings'!A:A)-4</td>
+                </tr>
+                <tr>
+                    <td><strong>📈 Active Loans</strong></td>
+                    <td>Number of active loans</td>
+                    <td>=COUNTIF('Loans'!G:G, "Active")</td>
+                </tr>
+                <tr>
+                    <td><strong>💵 Monthly Collection</strong></td>
+                    <td>Expected monthly income</td>
+                    <td>=2000*(Total Members)</td>
+                </tr>
+                <tr>
+                    <td><strong>📅 Next 5th Collection</strong></td>
+                    <td>Expected 5th collection</td>
+                    <td>=1000*(Total Members)</td>
+                </tr>
+                <tr>
+                    <td><strong>📅 Next 20th Collection</strong></td>
+                    <td>Expected 20th collection</td>
+                    <td>=1000*(Total Members)</td>
+                </tr>
+                <tr>
+                    <td><strong>🎯 On Track</strong></td>
+                    <td>Members with good standing</td>
+                    <td>=COUNTIF('Summary'!H:H, "On Track")</td>
+                </tr>
+                <tr>
+                    <td><strong>💰 Available for Loans</strong></td>
+                    <td>Funds available for new loans</td>
+                    <td>=Community Funds!B9</td>
+                </tr>
+                <tr>
+                    <td><strong>📉 Loan Interest Earned</strong></td>
+                    <td>Total interest from loans</td>
+                    <td>=SUM('Loan Payments'!F:F)</td>
+                </tr>
+                <tr>
+                    <td><strong>📈 Savings Interest Paid</strong></td>
+                    <td>Interest paid to members</td>
+                    <td>=SUM('Savings'!C:C)*0.09/12</td>
+                </tr>
+                <tr>
+                    <td><strong>📊 Net Interest</strong></td>
+                    <td>Difference between earned and paid</td>
+                    <td>=Loan Interest - Savings Interest</td>
+                </tr>
+            </table>
+            
+            <h3>5.2 Community Funds Report</h3>
+            
+            <div class="menu-command">🏦 S&L System → 📊 Reports → 💰 Community Funds Report</div>
+            
+            <div class="info-box">
+                <h4>📊 Report Contents:</h4>
+                <p><strong>1. Funds Summary:</strong></p>
+                <ul>
+                    <li>Total Community Savings</li>
+                    <li>Total Active Loans</li>
+                    <li>Total Available for Loans</li>
+                    <li>Reserve Fund (30%)</li>
+                    <li>Loans-to-Savings Ratio</li>
+                </ul>
+                <p><strong>2. Loan Capacity:</strong></p>
+                <ul>
+                    <li>Available for New Loans</li>
+                    <li>Maximum Single Loan</li>
+                    <li>Recommended Loan Limit</li>
+                    <li>Funds Status</li>
+                </ul>
+                <p><strong>3. Recent Activity:</strong></p>
+                <ul>
+                    <li>Transaction history</li>
+                    <li>Date and time stamps</li>
+                    <li>Transaction types</li>
+                    <li>Amounts and balances</li>
+                </ul>
+            </div>
+            
+            <h3>5.3 Payment Schedule Report</h3>
+            
+            <div class="menu-command">🏦 S&L System → 📊 Reports → 📅 Payment Schedule Report</div>
+            
+            <table>
+                <tr>
+                    <th>Report Type</th>
+                    <th>Time Frame</th>
+                    <th>Purpose</th>
+                </tr>
+                <tr>
+                    <td><strong>Upcoming Payments</strong></td>
+                    <td>Next 30 days</td>
+                    <td>Collection planning</td>
+                </tr>
+                <tr>
+                    <td><strong>Overdue Payments</strong></td>
+                    <td>Past due payments</td>
+                    <td>Collection follow-up</td>
+                </tr>
+                <tr>
+                    <td><strong>All Pending Payments</strong></td>
+                    <td>All outstanding</td>
+                    <td>Complete overview</td>
+                </tr>
+            </table>
+            
+            <h3>5.4 Export All Reports</h3>
+            
+            <div class="menu-command">🏦 S&L System → 📊 Reports → 📋 Export All Reports</div>
+            
+            <h4>Export Formats:</h4>
+            <ul>
+                <li><strong>PDF:</strong> Printable format (recommended)</li>
+                <li><strong>Excel:</strong> Data analysis format</li>
+                <li><strong>CSV:</strong> Database import format</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6.0 SYSTEM MAINTENANCE</h2>
+            
+            <h3>6.1 Regular Maintenance Tasks</h3>
+            
+            <table>
+                <tr>
+                    <th>Task</th>
+                    <th>Frequency</th>
+                    <th>Time Required</th>
+                    <th>Priority</th>
+                </tr>
+                <tr>
+                    <td>Refresh dropdowns</td>
+                    <td>Daily</td>
+                    <td>2 minutes</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Update calculations</td>
+                    <td>Daily</td>
+                    <td>5 minutes</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Fix formatting</td>
+                    <td>Weekly</td>
+                    <td>10 minutes</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td>Update months active</td>
+                    <td>Monthly</td>
+                    <td>15 minutes</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td>Community funds update</td>
+                    <td>Daily</td>
+                    <td>3 minutes</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Data backup</td>
+                    <td>Daily</td>
+                    <td>5 minutes</td>
+                    <td>Critical</td>
+                </tr>
+            </table>
+            
+            <h3>6.2 Common Fixes Menu</h3>
+            
+            <div class="menu-command">🏦 S&L System → 🔧 Tools</div>
+            
+            <div class="info-box">
+                <h4>🛠️ Quick Fix Menu:</h4>
+                <ul>
+                    <li><strong>🔧 Fix All Formatting:</strong> Alignment and colors</li>
+                    <li><strong>🔄 Refresh All Dropdowns:</strong> Member lists</li>
+                    <li><strong>⚡ Update All Calculations:</strong> Financial formulas</li>
+                    <li><strong>📐 Fix Months Active:</strong> Member activity duration</li>
+                    <li><strong>💰 Fix Community Funds:</strong> Fund calculations</li>
+                    <li><strong>🎯 Fix Member Portal:</strong> Portal display issues</li>
+                </ul>
+            </div>
+            
+            <h3>6.3 Data Backup Procedures</h3>
+            
+            <div class="warning-box">
+                <h4>⚠️ CRITICAL IMPORTANCE</h4>
+                <p><strong>REGULAR BACKUPS ARE ESSENTIAL</strong></p>
+                <p>Data loss can occur from accidental deletion, system errors, or user mistakes.</p>
+                <p>Always maintain current backups before making major changes.</p>
+            </div>
+            
+            <h4>Backup Methods:</h4>
+            <ul>
+                <li><strong>Google Drive Version History:</strong>
+                    <div class="menu-command">File → Version history → See version history</div>
+                </li>
+                <li><strong>Export as Excel/PDF:</strong>
+                    <div class="menu-command">File → Download → Select format</div>
+                </li>
+                <li><strong>Google Takeout:</strong>
+                    <div class="menu-command">takeout.google.com → Select Google Sheets</div>
+                </li>
+            </ul>
+            
+            <h3>6.4 Troubleshooting Common Issues</h3>
+            
+            <table>
+                <tr>
+                    <th>Issue</th>
+                    <th>Symptoms</th>
+                    <th>Solution</th>
+                </tr>
+                <tr>
+                    <td><strong>Slow Performance</strong></td>
+                    <td>Lagging, slow calculations</td>
+                    <td>Clear cache, archive data</td>
+                </tr>
+                <tr>
+                    <td><strong>Formula Errors</strong></td>
+                    <td>#ERROR, #VALUE messages</td>
+                    <td>Update calculations</td>
+                </tr>
+                <tr>
+                    <td><strong>Missing Data</strong></td>
+                    <td>Blank cells, missing info</td>
+                    <td>Restore from backup</td>
+                </tr>
+                <tr>
+                    <td><strong>Permission Errors</strong></td>
+                    <td>Access denied messages</td>
+                    <td>Check sharing settings</td>
+                </tr>
+                <tr>
+                    <td><strong>Script Errors</strong></td>
+                    <td>Script failure messages</td>
+                    <td>Re-authorize script</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>7.0 VIEW SETTINGS & ACCESS CONTROL</h2>
+            
+            <h3>7.1 View Modes</h3>
+            
+            <div class="info-box">
+                <h4>👁️ Two View Modes Available:</h4>
+                <p><strong>1. Admin View (Full Access):</strong> All sheets visible</p>
+                <p><strong>2. Member View (Restricted):</strong> Only Member Portal visible</p>
+            </div>
+            
+            <h3>7.2 Switching Between Views</h3>
+            
+            <p><strong>Show All Sheets (Admin Mode):</strong></p>
+            <div class="menu-command">🏦 S&L System → 👁️ View Settings → 📤 Show All Sheets</div>
+            
+            <p><strong>Show Only Member Portal:</strong></p>
+            <div class="menu-command">🏦 S&L System → 👁️ View Settings → 📥 Member Portal Only</div>
+            
+            <p><strong>Toggle Between Views:</strong></p>
+            <div class="menu-command">🏦 S&L System → 👁️ View Settings → 🔄 Toggle Sheet Visibility</div>
+            
+            <h3>7.3 Quick Navigation</h3>
+            
+            <div class="menu-command">🏦 S&L System → 👁️ View Settings → 🎯 Focus on Dashboard</div>
+            <div class="menu-command">🏦 S&L System → 👁️ View Settings → 💰 Focus on Community Funds</div>
+            <div class="menu-command">🏦 S&L System → 👁️ View Settings → 📊 Focus on Summary</div>
+            
+            <h3>7.4 Security Recommendations</h3>
+            
+            <div class="info-box">
+                <h4>🔒 Security Best Practices:</h4>
+                <ul>
+                    <li><strong>Admin Access:</strong> Limited to trusted personnel only</li>
+                    <li><strong>Member Access:</strong> View-only, no editing rights</li>
+                    <li><strong>Training:</strong> Train admins on proper usage</li>
+                    <li><strong>Monitoring:</strong> Regular access reviews</li>
+                    <li><strong>Backup:</strong> Regular data backups</li>
+                    <li><strong>Audit:</strong> Regular access audits</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>8.0 MEMBER PORTAL GUIDE</h2>
+            
+            <h3>8.1 Portal Overview</h3>
+            
+            <div class="info-box">
+                <h4>🎯 Portal Purpose:</h4>
+                <p>The Member Portal allows members to view their personal financial information without accessing administrative data.</p>
+                <p><strong>Key Features:</strong></p>
+                <ul>
+                    <li>Secure access to personal data only</li>
+                    <li>Real-time information updates</li>
+                    <li>No login required (dropdown selection)</li>
+                    <li>View-only access (no editing)</li>
+                    <li>Clean, simple interface</li>
+                </ul>
+            </div>
+            
+            <h3>8.2 Accessing the Portal</h3>
+            
+            <h4>For Members:</h4>
+            <ol>
+                <li>Open the Google Sheet</li>
+                <li>Go to <strong>👤 Member Portal</strong> sheet</li>
+                <li>Click cell <strong>C7</strong> (Member ID dropdown)</li>
+                <li>Select your Member ID from the list</li>
+                <li>Information displays automatically</li>
+            </ol>
+            
+            <h3>8.3 Information Displayed</h3>
+            
+            <table>
+                <tr>
+                    <th>Information Type</th>
+                    <th>Details Shown</th>
+                    <th>Update Frequency</th>
+                </tr>
+                <tr>
+                    <td><strong>Basic Information</strong></td>
+                    <td>Member ID, Name, Status</td>
+                    <td>Real-time</td>
+                </tr>
+                <tr>
+                    <td><strong>Savings Information</strong></td>
+                    <td>Total Savings, Balance, Interest</td>
+                    <td>Real-time</td>
+                </tr>
+                <tr>
+                    <td><strong>Loan Information</strong></td>
+                    <td>Current Loan, Loan Status</td>
+                    <td>Real-time</td>
+                </tr>
+                <tr>
+                    <td><strong>Payment Information</strong></td>
+                    <td>Next Payment Date, Amount</td>
+                    <td>Real-time</td>
+                </tr>
+                <tr>
+                    <td><strong>Additional Information</strong></td>
+                    <td>Active Loans, Payment Streak</td>
+                    <td>Real-time</td>
+                </tr>
+            </table>
+            
+            <h3>8.4 Portal Features</h3>
+            
+            <div class="success-box">
+                <h4>✨ Feature Highlights:</h4>
+                <p><strong>Auto-Update:</strong> No refresh needed, updates instantly</p>
+                <p><strong>Search Function:</strong> Dropdown with all member IDs</p>
+                <p><strong>Clear Option:</strong> "Clear Selection" in dropdown</p>
+                <p><strong>Color Coding:</strong> Status indicators with colors</p>
+                <p><strong>Formatting:</strong> Proper currency and date formats</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>9.0 TROUBLESHOOTING GUIDE</h2>
+            
+            <h3>9.1 Common Issues & Solutions</h3>
+            
+            <div class="warning-box">
+                <h4>🚨 URGENT ISSUES:</h4>
+                <p><strong>If system won't load or crashes:</strong></p>
+                <p>1. Close and reopen Google Sheets</p>
+                <p>2. Clear browser cache</p>
+                <p>3. Try different browser</p>
+                <p>4. Contact technical support</p>
+            </div>
+            
+            <table>
+                <tr>
+                    <th>Issue</th>
+                    <th>Symptoms</th>
+                    <th>Immediate Solution</th>
+                </tr>
+                <tr>
+                    <td><strong>Script Not Running</strong></td>
+                    <td>Menu missing, functions not working</td>
+                    <td>Re-authorize script in Apps Script</td>
+                </tr>
+                <tr>
+                    <td><strong>Dropdowns Empty</strong></td>
+                    <td>No members in dropdown lists</td>
+                    <td>Refresh All Dropdowns from Tools</td>
+                </tr>
+                <tr>
+                    <td><strong>Incorrect Calculations</strong></td>
+                    <td>Wrong totals, incorrect interest</td>
+                    <td>Update All Calculations from Tools</td>
+                </tr>
+                <tr>
+                    <td><strong>Formatting Issues</strong></td>
+                    <td>Misaligned cells, wrong colors</td>
+                    <td>Fix All Formatting from Tools</td>
+                </tr>
+                <tr>
+                    <td><strong>Slow Performance</strong></td>
+                    <td>Lagging, slow loading</td>
+                    <td>Clear browser cache, archive data</td>
+                </tr>
+            </table>
+            
+            <h3>9.2 Error Messages & Solutions</h3>
+            
+            <div class="info-box">
+                <h4>❌ Common Error Messages:</h4>
+                <p><strong>"Member ID Not Found":</strong></p>
+                <ul>
+                    <li>Check spelling of Member ID</li>
+                    <li>Verify member exists in Savings sheet</li>
+                    <li>Refresh dropdown lists</li>
+                </ul>
+                <p><strong>"Insufficient Funds":</strong></p>
+                <ul>
+                    <li>Check Community Funds sheet</li>
+                    <li>Wait for more savings contributions</li>
+                    <li>Request smaller loan amount</li>
+                </ul>
+                <p><strong>"Not Eligible for Loan":</strong></p>
+                <ul>
+                    <li>Check savings balance (₱6,000 minimum)</li>
+                    <li>Verify savings status is "On Track"</li>
+                    <li>Check for existing active loans</li>
+                </ul>
+            </div>
+            
+            <h3>9.3 Troubleshooting Checklist</h3>
+            
+            <div class="checkbox">Check internet connection</div>
+            <div class="checkbox">Verify Google account access</div>
+            <div class="checkbox">Check system menu appears</div>
+            <div class="checkbox">Test basic functions</div>
+            <div class="checkbox">Verify data displays correctly</div>
+            <div class="checkbox">Check calculation accuracy</div>
+            <div class="checkbox">Test backup restoration</div>
+            <div class="checkbox">Verify user permissions</div>
+        </div>
+
+        <div class="section">
+            <h2>10.0 QUICK START CHECKLIST</h2>
+            
+            <h3>10.1 Setup Phase (Week 1)</h3>
+            
+            <div class="checkbox">Generate system from Apps Script</div>
+            <div class="checkbox">Authorize script permissions</div>
+            <div class="checkbox">Configure company settings</div>
+            <div class="checkbox">Test basic functions</div>
+            <div class="checkbox">Verify all sheets created</div>
+            
+            <h3>10.2 Initial Members (Week 2)</h3>
+            
+            <div class="checkbox">Add first 5-10 members</div>
+            <div class="checkbox">Record initial savings deposits</div>
+            <div class="checkbox">Verify member information</div>
+            <div class="checkbox">Test Member Portal access</div>
+            <div class="checkbox">Generate first reports</div>
+            
+            <h3>10.3 First Week Operations (Week 3)</h3>
+            
+            <div class="checkbox">Record daily payments</div>
+            <div class="checkbox">Process first loan application</div>
+            <div class="checkbox">Generate daily reports</div>
+            <div class="checkbox">Backup system data</div>
+            <div class="checkbox">Train additional users</div>
+            
+            <h3>10.4 Daily Must-Do's:</h3>
+            <div class="info-box">
+                <ul>
+                    <li>Check system status</li>
+                    <li>Record all payments</li>
+                    <li>Update calculations</li>
+                    <li>Backup data</li>
+                    <li>Monitor funds</li>
+                </ul>
+            </div>
+            
+            <h3>10.5 Weekly Must-Do's:</h3>
+            <div class="info-box">
+                <ul>
+                    <li>Generate weekly reports</li>
+                    <li>Review overdue payments</li>
+                    <li>Update member statuses</li>
+                    <li>Check system performance</li>
+                    <li>Backup complete system</li>
+                </ul>
+            </div>
+            
+            <h3>10.6 Monthly Must-Do's:</h3>
+            <div class="info-box">
+                <ul>
+                    <li>Generate monthly reports</li>
+                    <li>Calculate and apply interest</li>
+                    <li>Review loan portfolio</li>
+                    <li>Update all settings</li>
+                    <li>Archive old data</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <div class="feature-box">
+                    <h3>🎯 SYSTEM BENEFITS SUMMARY</h3>
+                    
+                    <h4>✅ Automated Features:</h4>
+                    <ul>
+                        <li>Member ID generation</li>
+                        <li>Loan ID generation</li>
+                        <li>Payment scheduling</li>
+                        <li>Interest calculations</li>
+                        <li>Status updates</li>
+                        <li>Fund tracking</li>
+                    </ul>
+                    
+                    <h4>✅ Safety Features:</h4>
+                    <ul>
+                        <li>Community funds protection</li>
+                        <li>Eligibility verification</li>
+                        <li>Reserve requirements</li>
+                        <li>Transaction recording</li>
+                        <li>Audit trails</li>
+                    </ul>
+                    
+                    <h4>✅ User-Friendly Features:</h4>
+                    <ul>
+                        <li>Member self-service portal</li>
+                        <li>Color-coded status system</li>
+                        <li>Professional reports</li>
+                        <li>Easy data entry forms</li>
+                        <li>Quick navigation</li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <h3>📞 SUPPORT INFORMATION</h3>
+                    
+                    <h4>For Technical Issues:</h4>
+                    <ol>
+                        <li>Use Troubleshooting Guide (Section 9)</li>
+                        <li>Apply fixes from Tools menu</li>
+                        <li>Restore from backup if needed</li>
+                        <li>Contact system administrator</li>
+                    </ol>
+                    
+                    <h4>Best Practices:</h4>
+                    <ul>
+                        <li>Always use forms for data entry</li>
+                        <li>Regular backups prevent data loss</li>
+                        <li>Train all users properly</li>
+                        <li>Monitor system performance</li>
+                        <li>Update settings as needed</li>
+                    </ul>
+                </div>
+                
+                <div class="header" style="margin-top: 40px; border-top: 3px solid #2c3e50; padding-top: 20px;">
+                    <p><strong>Document Version:</strong> 1.0</p>
+                    <p><strong>Last Updated:</strong> January 2026</p>
+                    <p><strong>System Version:</strong> S&L System</p>
+                    <p style="color: #7f8c8d; font-style: italic;">This guide covers all menu items and functions available in the Savings & Loan System.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add print functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add print button functionality
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @media print {
+                    .no-print { display: none; }
+                    body { font-size: 12pt; }
+                    h2 { page-break-before: always; }
+                    .section { page-break-inside: avoid; }
+                }
+                
+                .print-button {
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #3498db;
+                    color: white;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    z-index: 1000;
+                    font-weight: bold;
+                }
+                
+                .print-button:hover {
+                    background: #2980b9;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Add print button
+            const printButton = document.createElement('button');
+            printButton.className = 'print-button no-print';
+            printButton.innerHTML = '🖨️ Print/PDF';
+            printButton.onclick = function() {
+                window.print();
+            };
+            document.body.appendChild(printButton);
+            
+            // Add page numbers for print
+            const style2 = document.createElement('style');
+            style2.innerHTML = `
+                @page {
+                    @bottom-right {
+                        content: "Page " counter(page);
+                        font-size: 10pt;
+                    }
+                }
+            `;
+            document.head.appendChild(style2);
+        });
+    </script>
+</body>
+</html>
