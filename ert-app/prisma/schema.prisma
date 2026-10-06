@@ -1,0 +1,88 @@
+generator client { provider = "prisma-client-js" }
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role   { SUPER_ADMIN SITE_COMMANDER OPERATOR }
+enum Status { PENDING SAFE NOT_SAFE HELP }
+
+model User {
+  id           String  @id @default(uuid())
+  email        String  @unique
+  passwordHash String
+  role         Role    @default(OPERATOR)
+  active       Boolean @default(true)
+  sessionVersion Int   @default(0) // bump to sign the user out everywhere
+  mfaSecret    String?   // AES-256-GCM encrypted TOTP secret
+  mfaEnabled   Boolean   @default(false)
+  mfaLastStep  Int?      // last accepted 30s step, blocks code replay
+  mfaRecovery  String[]  // bcrypt hashes of unused recovery codes
+  siteId       String? // required for SITE_COMMANDER / OPERATOR
+  site         Site?   @relation(fields: [siteId], references: [id])
+}
+
+model Site {
+  id        String              @id @default(uuid())
+  name      String              @unique // "Davao", "Makati"
+  senderId  String              // "OAMPI Davao"
+  employees Employee[]
+  campaigns BroadcastCampaign[]
+  users     User[]
+}
+
+model Department {
+  id        String     @id @default(uuid())
+  name      String     @unique
+  employees Employee[]
+}
+
+model Employee {
+  id          String        @id @default(uuid())
+  firstName   String
+  lastName    String
+  phoneNumber String        @unique // 639XXXXXXXXX
+  siteId      String
+  site        Site          @relation(fields: [siteId], references: [id])
+  deptId      String
+  department  Department    @relation(fields: [deptId], references: [id])
+  responses   SMSResponse[]
+  @@index([siteId])
+  @@index([deptId])
+}
+
+model BroadcastCampaign {
+  id          String        @id @default(uuid())
+  title       String
+  messageBody String
+  shortCode   String        @default("6780")
+  siteId      String?       // null = all sites
+  site        Site?         @relation(fields: [siteId], references: [id])
+  createdAt   DateTime      @default(now())
+  responses   SMSResponse[]
+}
+
+model SMSResponse {
+  id         String            @id @default(uuid())
+  campaignId String
+  campaign   BroadcastCampaign @relation(fields: [campaignId], references: [id])
+  employeeId String
+  employee   Employee          @relation(fields: [employeeId], references: [id])
+  rawReply   String?           // null until the employee replies
+  status     Status            @default(PENDING)
+  updatedAt  DateTime          @updatedAt
+  @@unique([campaignId, employeeId])
+  @@index([campaignId, status])
+}
+
+model AuditLog {
+  id     String   @id @default(uuid())
+  at     DateTime @default(now())
+  userId String?
+  email  String?
+  action String   // e.g. "login.fail", "broadcast.create", "user.create"
+  ip     String?
+  detail Json     @default("{}")
+  @@index([at])
+  @@index([userId, action, at])
+}
